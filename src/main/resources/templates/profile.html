@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>User Login Page</title>
+</head>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<body>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-6 mx-auto rounded border p-4">
+                <h2 class="text-center mb-4">Post office List of India by City</h2>
+               <form th:action="@{/api/postofficedetail}" method="get" id="cityForm">
+                    <div class="mb-3">
+                        <select id="citySelect" name="cityName" class="form-select" onchange="document.getElementById('cityForm').submit();">
+                            <option value="">Select a city...</option>
+                            <option value="Bihar">Bihar</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Bangalore">Bangalore</option>
+                            <option value="Darjeeling">Darjeeling</option>
+                        </select>
+                    </div>
+                </form>
+                
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr> 
+                            <th>City Name</th>
+                            <th>region</th>
+                             <th>Division</th>
+                            <th>Circle</th>
+                            <th>Country</th>
+                            <th>Pin Code</th>
+                          
+                         
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="user, c:${postaldata}"> 
+                        	<td th:text="${user.name}"></td>
+                            <td th:text="${user.region}"></td>
+                            <td th:text="${user.division}"></td>
+                            <td th:text="${user.circle}"></td>
+                            <td th:text="${user.country}"></td>
+                            <td th:text="${user.pincode}"></td>
+                            </tr>
+                        
+                    </tbody>
+                   
+                </table>
+            </div> 
+          
+   </div></div>
+</body>
+
+</html>
